@@ -7,22 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		378924362AF4011400A0055C /* SafariCloudReaderKit in Frameworks */ = {isa = PBXBuildFile; productRef = 378924352AF4011400A0055C /* SafariCloudReaderKit */; };
 		37C8573D2AEAAEC3002293BA /* SafariCloudTabReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C8573C2AEAAEC3002293BA /* SafariCloudTabReaderApp.swift */; };
 		37C8573F2AEAAEC3002293BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C8573E2AEAAEC3002293BA /* ContentView.swift */; };
 		37C857412AEAAEC4002293BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C857402AEAAEC4002293BA /* Assets.xcassets */; };
 		37C857442AEAAEC4002293BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C857432AEAAEC4002293BA /* Preview Assets.xcassets */; };
-		37C8574C2AEAAED2002293BA /* SafariCloudTabReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C8574B2AEAAED2002293BA /* SafariCloudTabReader.swift */; };
-		37C8574F2AEAAEF6002293BA /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 37C8574E2AEAAEF6002293BA /* SQLite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		378924332AF3FE1100A0055C /* SafariCloudReaderKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SafariCloudReaderKit; sourceTree = "<group>"; };
 		37C857392AEAAEC3002293BA /* SafariCloudTabReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafariCloudTabReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37C8573C2AEAAEC3002293BA /* SafariCloudTabReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariCloudTabReaderApp.swift; sourceTree = "<group>"; };
 		37C8573E2AEAAEC3002293BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		37C857402AEAAEC4002293BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37C857432AEAAEC4002293BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		37C857452AEAAEC4002293BA /* SafariCloudTabReader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafariCloudTabReader.entitlements; sourceTree = "<group>"; };
-		37C8574B2AEAAED2002293BA /* SafariCloudTabReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariCloudTabReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,18 +29,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37C8574F2AEAAEF6002293BA /* SQLite in Frameworks */,
+				378924362AF4011400A0055C /* SafariCloudReaderKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		378924342AF4011400A0055C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		37C857302AEAAEC3002293BA = {
 			isa = PBXGroup;
 			children = (
+				378924332AF3FE1100A0055C /* SafariCloudReaderKit */,
 				37C8573B2AEAAEC3002293BA /* SafariCloudTabReader */,
 				37C8573A2AEAAEC3002293BA /* Products */,
+				378924342AF4011400A0055C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +66,6 @@
 			children = (
 				37C8573C2AEAAEC3002293BA /* SafariCloudTabReaderApp.swift */,
 				37C8573E2AEAAEC3002293BA /* ContentView.swift */,
-				37C8574B2AEAAED2002293BA /* SafariCloudTabReader.swift */,
 				37C857402AEAAEC4002293BA /* Assets.xcassets */,
 				37C857452AEAAEC4002293BA /* SafariCloudTabReader.entitlements */,
 				37C857422AEAAEC4002293BA /* Preview Content */,
@@ -91,7 +98,7 @@
 			);
 			name = SafariCloudTabReader;
 			packageProductDependencies = (
-				37C8574E2AEAAEF6002293BA /* SQLite */,
+				378924352AF4011400A0055C /* SafariCloudReaderKit */,
 			);
 			productName = SafariCloudTabReader;
 			productReference = 37C857392AEAAEC3002293BA /* SafariCloudTabReader.app */;
@@ -122,7 +129,6 @@
 			);
 			mainGroup = 37C857302AEAAEC3002293BA;
 			packageReferences = (
-				37C8574D2AEAAEF6002293BA /* XCRemoteSwiftPackageReference "SQLite" */,
 			);
 			productRefGroup = 37C8573A2AEAAEC3002293BA /* Products */;
 			projectDirPath = "";
@@ -151,7 +157,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				37C8573F2AEAAEC3002293BA /* ContentView.swift in Sources */,
-				37C8574C2AEAAED2002293BA /* SafariCloudTabReader.swift in Sources */,
 				37C8573D2AEAAEC3002293BA /* SafariCloudTabReaderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,22 +361,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		37C8574D2AEAAEF6002293BA /* XCRemoteSwiftPackageReference "SQLite" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.14.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		37C8574E2AEAAEF6002293BA /* SQLite */ = {
+		378924352AF4011400A0055C /* SafariCloudReaderKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 37C8574D2AEAAEF6002293BA /* XCRemoteSwiftPackageReference "SQLite" */;
-			productName = SQLite;
+			productName = SafariCloudReaderKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

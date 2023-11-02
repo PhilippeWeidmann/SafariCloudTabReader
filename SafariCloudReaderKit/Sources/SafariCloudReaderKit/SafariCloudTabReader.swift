@@ -8,19 +8,23 @@
 import Foundation
 import SQLite
 
-class SafariCloudTabReader {
-    lazy var cloudTabsURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first?
+public class SafariCloudTabReader {
+    public lazy var cloudTabsURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first?
         .appendingPathComponent("Containers/com.apple.Safari/Data/Library/Safari/CloudTabs.db")
 
     enum SafariCloudTabReaderError: Error {
         case noPath
     }
+    
+    public init() {}
 
-    func readDB() throws {
+    public func readDB() throws {
         guard let cloudTabsPath = cloudTabsURL?.path else { throw SafariCloudTabReaderError.noPath }
-        
-        let temporaryWorkingDirectoryPath = FileManager.default.temporaryDirectory.appendingPathComponent("SafariCloudTabReader").path
-        let temporaryWorkingPath = FileManager.default.temporaryDirectory.appendingPathComponent("SafariCloudTabReader/CloudTabs.db").path
+
+        let temporaryWorkingDirectoryPath = FileManager.default.temporaryDirectory.appendingPathComponent("SafariCloudTabReader")
+            .path
+        let temporaryWorkingPath = FileManager.default.temporaryDirectory
+            .appendingPathComponent("SafariCloudTabReader/CloudTabs.db").path
 
         if FileManager.default.fileExists(atPath: temporaryWorkingDirectoryPath) {
             try FileManager.default.removeItem(atPath: temporaryWorkingDirectoryPath)

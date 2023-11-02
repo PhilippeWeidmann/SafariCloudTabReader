@@ -5,8 +5,8 @@
 //  Created by Philippe Weidmann on 26.10.2023.
 //
 
-import CloudKit
 import SwiftUI
+import SafariCloudReaderKit
 
 struct ContentView: View {
     var body: some View {

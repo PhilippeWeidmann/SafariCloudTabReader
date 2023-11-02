@@ -14,15 +14,7 @@ struct SafariCloudTabReaderApp: App {
             ContentView()
         }
         if #available(macOS 13.0, *) {
-            MenuBarExtra(
-                "SafariCloudTabReader",
-                systemImage: "link.icloud.fill",
-                isInserted: .constant(true)
-            ) {
-                Text("")
-                    .frame(width: 300, height: 400)
-            }
-            .menuBarExtraStyle(.window)
+            MenuBarScene()
         }
     }
 }

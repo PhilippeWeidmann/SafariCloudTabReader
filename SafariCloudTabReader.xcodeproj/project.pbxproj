@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		378924362AF4011400A0055C /* SafariCloudReaderKit in Frameworks */ = {isa = PBXBuildFile; productRef = 378924352AF4011400A0055C /* SafariCloudReaderKit */; };
+		378924382AF4062900A0055C /* TabList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378924372AF4062900A0055C /* TabList.swift */; };
+		3789243A2AF4071000A0055C /* TabRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378924392AF4071000A0055C /* TabRowView.swift */; };
+		3789243E2AF40D6400A0055C /* MenuBarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3789243D2AF40D6400A0055C /* MenuBarScene.swift */; };
+		378924402AF4130900A0055C /* RequestTabAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3789243F2AF4130900A0055C /* RequestTabAccessView.swift */; };
+		378924442AF4138500A0055C /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378924432AF4138500A0055C /* PreferencesView.swift */; };
+		378924462AF414F900A0055C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378924452AF414F900A0055C /* Constants.swift */; };
 		37C8573D2AEAAEC3002293BA /* SafariCloudTabReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C8573C2AEAAEC3002293BA /* SafariCloudTabReaderApp.swift */; };
 		37C8573F2AEAAEC3002293BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C8573E2AEAAEC3002293BA /* ContentView.swift */; };
 		37C857412AEAAEC4002293BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C857402AEAAEC4002293BA /* Assets.xcassets */; };
@@ -16,6 +22,12 @@
 
 /* Begin PBXFileReference section */
 		378924332AF3FE1100A0055C /* SafariCloudReaderKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SafariCloudReaderKit; sourceTree = "<group>"; };
+		378924372AF4062900A0055C /* TabList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabList.swift; sourceTree = "<group>"; };
+		378924392AF4071000A0055C /* TabRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabRowView.swift; sourceTree = "<group>"; };
+		3789243D2AF40D6400A0055C /* MenuBarScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarScene.swift; sourceTree = "<group>"; };
+		3789243F2AF4130900A0055C /* RequestTabAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTabAccessView.swift; sourceTree = "<group>"; };
+		378924432AF4138500A0055C /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		378924452AF414F900A0055C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		37C857392AEAAEC3002293BA /* SafariCloudTabReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafariCloudTabReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37C8573C2AEAAEC3002293BA /* SafariCloudTabReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariCloudTabReaderApp.swift; sourceTree = "<group>"; };
 		37C8573E2AEAAEC3002293BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +55,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		378924412AF4132D00A0055C /* MenuBarView */ = {
+			isa = PBXGroup;
+			children = (
+				3789243D2AF40D6400A0055C /* MenuBarScene.swift */,
+				378924372AF4062900A0055C /* TabList.swift */,
+				378924392AF4071000A0055C /* TabRowView.swift */,
+			);
+			path = MenuBarView;
+			sourceTree = "<group>";
+		};
+		378924422AF4133900A0055C /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				37C8573E2AEAAEC3002293BA /* ContentView.swift */,
+				3789243F2AF4130900A0055C /* RequestTabAccessView.swift */,
+				378924432AF4138500A0055C /* PreferencesView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
 		37C857302AEAAEC3002293BA = {
 			isa = PBXGroup;
 			children = (
@@ -65,10 +97,12 @@
 			isa = PBXGroup;
 			children = (
 				37C8573C2AEAAEC3002293BA /* SafariCloudTabReaderApp.swift */,
-				37C8573E2AEAAEC3002293BA /* ContentView.swift */,
+				378924412AF4132D00A0055C /* MenuBarView */,
+				378924422AF4133900A0055C /* MainView */,
 				37C857402AEAAEC4002293BA /* Assets.xcassets */,
 				37C857452AEAAEC4002293BA /* SafariCloudTabReader.entitlements */,
 				37C857422AEAAEC4002293BA /* Preview Content */,
+				378924452AF414F900A0055C /* Constants.swift */,
 			);
 			path = SafariCloudTabReader;
 			sourceTree = "<group>";
@@ -156,8 +190,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				378924402AF4130900A0055C /* RequestTabAccessView.swift in Sources */,
 				37C8573F2AEAAEC3002293BA /* ContentView.swift in Sources */,
+				3789243E2AF40D6400A0055C /* MenuBarScene.swift in Sources */,
+				3789243A2AF4071000A0055C /* TabRowView.swift in Sources */,
 				37C8573D2AEAAEC3002293BA /* SafariCloudTabReaderApp.swift in Sources */,
+				378924382AF4062900A0055C /* TabList.swift in Sources */,
+				378924442AF4138500A0055C /* PreferencesView.swift in Sources */,
+				378924462AF414F900A0055C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

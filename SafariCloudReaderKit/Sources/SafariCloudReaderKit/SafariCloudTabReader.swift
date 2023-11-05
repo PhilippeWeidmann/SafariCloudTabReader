@@ -26,7 +26,11 @@ public class SafariCloudTabReader {
         return FileManager.default.isReadableFile(atPath: cloudTabsPath)
     }
 
-    public func fetchTabs() async throws -> [SafariTab] {
+    public func fetchTabsPerDevice() async throws -> [Device] {
+        return try blockingFetchTabsPerDevice()
+    }
+
+    public func blockingFetchTabsPerDevice() throws -> [Device] {
         guard let cloudTabsPath = cloudTabsURL?.path else { throw SafariCloudTabReaderError.noPath }
 
         let temporaryWorkingDirectoryPath = FileManager.default.temporaryDirectory.appendingPathComponent("SafariCloudTabReader")
@@ -42,11 +46,34 @@ public class SafariCloudTabReader {
 
         let db = try Connection(temporaryWorkingPath)
 
+        let devices = try fetchDevices(db: db)
+        let tabsPerDevice = try fetchTabs(db: db, devices: devices)
+
+        return tabsPerDevice.filter { !$0.tabs.isEmpty }
+    }
+
+    private func fetchDevices(db: Connection) throws -> [Device] {
+        let devices = Table("cloud_tab_devices")
+        let deviceUuid = Expression<String>("device_uuid")
+        let deviceName = Expression<String>("device_name")
+        return try db.prepare(devices).map { Device(id: $0[deviceUuid], name: $0[deviceName]) }
+    }
+
+    private func fetchTabs(db: Connection, devices: [Device]) throws -> [Device] {
+        var devices = devices
         let cloudTabs = Table("cloud_tabs")
-        let uuid = Expression<String>("tab_uuid")
+        let tabUuid = Expression<String>("tab_uuid")
+        let deviceUuid = Expression<String>("device_uuid")
         let title = Expression<String>("title")
         let url = Expression<String>("url")
 
-        return try db.prepare(cloudTabs).map { SafariTab(id: $0[uuid], title: $0[title], rawURL: $0[url]) }
+        for tab in try db.prepare(cloudTabs) {
+            let safariTab = SafariTab(id: tab[tabUuid], title: tab[title], rawURL: tab[url])
+            guard let existingDeviceIndex = devices.firstIndex(where: { $0.id == tab[deviceUuid] }) else {
+                continue
+            }
+            devices[existingDeviceIndex].tabs.append(safariTab)
+        }
+        return devices
     }
 }

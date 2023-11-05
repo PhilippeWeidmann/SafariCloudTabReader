@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>iCloud Tabs</title>
+    <style>
+        body {
+            background: #E1E0DF;
+            width: 400pt;
+            height: 400pt;
+            --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            padding: 16pt;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            padding: 0pt;
+            flex-direction: column;
+            gap: 8pt;
+        }
+
+        .deviceName {
+            padding-top: 8pt;
+        }
+
+        .cardButton {
+            display: block;
+            text-decoration: none;
+            border: 1pt solid #F0F0EF;
+            background-color: #F0F0EF;
+            border-radius: 5pt;
+            padding: 8pt;
+            text-align: start;
+            transition: background-color 0.3s;
+            color: #333;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .cardButton:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+<h1>iCloud Tabs</h1>
+<div id="tabList"></div>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "iCloud Tabs",
+  "description": "An extension to view iCloud tabs in Chromium browsers",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icon.png"
+  },
+  "host_permissions": [
+    "http://localhost/*"
+  ]
+}

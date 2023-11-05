@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SafariCloudReaderKit
 
 struct PreferencesView: View {
     @AppStorage(Constants.enableChromiumExtensionServerKey) private var tabServerEnabled = true
@@ -25,6 +26,9 @@ struct PreferencesView: View {
             }
         }
         .padding()
+        .onAppear {
+            SafariTabServer.shared.start()
+        }
     }
 }
 

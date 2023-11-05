@@ -10,15 +10,22 @@ import SwiftUI
 
 struct TabList: View {
     @State private var windowObserver: NSKeyValueObservation?
-    @State private var tabs: [SafariTab]?
+    @State private var tabsPerDevice: [Device]?
+    @State private var estimatedHeight: CGFloat = 32
     @State private var loadingError: Error?
 
     var body: some View {
         List {
             if SafariCloudTabReader.shared.canFetchTabs() {
-                if let tabs {
-                    ForEach(tabs) { tab in
-                        TabRowView(tab: tab)
+                if let tabsPerDevice {
+                    ForEach(tabsPerDevice) { device in
+                        Section {
+                            ForEach(device.tabs.filter { $0.url != nil }) { tab in
+                                TabRowView(tab: tab)
+                            }
+                        } header: {
+                            Text(device.name)
+                        }
                     }
                 } else {
                     Text("Fetching tabs")
@@ -27,10 +34,11 @@ struct TabList: View {
                 Text("Cannot fetch tabs")
             }
         }
-        .listStyle(.plain)
-        .frame(width: 400, height: CGFloat((tabs?.count ?? 1) * 28))
+        .listStyle(.sidebar)
+        .frame(width: 400, height: estimatedHeight)
         .onAppear {
             windowObserver = NSApplication.shared.observe(\.keyWindow) { x, y in
+                guard NSApplication.shared.keyWindow != nil else { return }
                 Task {
                     await loadTabs()
                 }
@@ -40,7 +48,15 @@ struct TabList: View {
 
     func loadTabs() async {
         do {
-            tabs = try await SafariCloudTabReader.shared.fetchTabs().filter { $0.url != nil }
+            SafariXPCConnector.shared.xpcFetchCloudTabDevicesAndCloseRequests()
+            let tabsPerDevice = try await SafariCloudTabReader.shared.fetchTabsPerDevice()
+            self.tabsPerDevice = tabsPerDevice
+            let allTabsCount = tabsPerDevice
+                .map { $0.tabs.filter { $0.url != nil }.count }
+                .reduce(0) { x, y in
+                    x + y
+                }
+            estimatedHeight = CGFloat(16 * tabsPerDevice.count + 32 * allTabsCount) + 24
         } catch {
             loadingError = error
         }

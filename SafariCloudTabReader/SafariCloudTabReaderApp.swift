@@ -10,9 +10,10 @@ import SwiftUI
 @main
 struct SafariCloudTabReaderApp: App {
     var body: some Scene {
-        WindowGroup {
+        Settings {
             ContentView()
         }
+
         if #available(macOS 13.0, *) {
             MenuBarScene()
         }

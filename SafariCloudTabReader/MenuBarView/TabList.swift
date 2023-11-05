@@ -24,7 +24,26 @@ struct TabList: View {
                                 TabRowView(tab: tab)
                             }
                         } header: {
-                            Text(device.name)
+                            HStack {
+                                Text(device.name)
+                                if tabsPerDevice.firstIndex(where: { $0.id == device.id }) == 0 {
+                                    Spacer()
+
+                                    Group {
+                                        if #available(macOS 14.0, *) {
+                                            SettingsLink {
+                                                Label("Preferences", systemImage: "gear")
+                                            }
+                                        } else {
+                                            Button("Preferences", systemImage: "gear") {
+                                                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+                                            }
+                                        }
+                                    }
+                                    .labelStyle(.iconOnly)
+                                    .buttonStyle(.plain)
+                                }
+                            }
                         }
                     }
                 } else {

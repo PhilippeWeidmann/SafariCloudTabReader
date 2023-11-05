@@ -16,7 +16,7 @@ struct TabList: View {
 
     var body: some View {
         List {
-            if SafariCloudTabReader.shared.canFetchTabs() {
+            if !SafariCloudTabReader.shared.canFetchTabs() {
                 if let tabsPerDevice {
                     ForEach(tabsPerDevice) { device in
                         Section {
@@ -29,19 +29,7 @@ struct TabList: View {
                                 if tabsPerDevice.firstIndex(where: { $0.id == device.id }) == 0 {
                                     Spacer()
 
-                                    Group {
-                                        if #available(macOS 14.0, *) {
-                                            SettingsLink {
-                                                Label("Preferences", systemImage: "gear")
-                                            }
-                                        } else {
-                                            Button("Preferences", systemImage: "gear") {
-                                                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-                                            }
-                                        }
-                                    }
-                                    .labelStyle(.iconOnly)
-                                    .buttonStyle(.plain)
+                                    SettingsButton()
                                 }
                             }
                         }
@@ -50,7 +38,7 @@ struct TabList: View {
                     Text("Fetching tabs")
                 }
             } else {
-                Text("Cannot fetch tabs")
+                SettingsButton()
             }
         }
         .listStyle(.sidebar)
